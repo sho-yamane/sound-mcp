@@ -29,7 +29,7 @@ const server = new McpServer({
 
 // 効果音を再生するツール
 server.tool(
-  "playCompletionSound",
+  "sound-notification-mcp",
   {
     sound: z
       .enum([
