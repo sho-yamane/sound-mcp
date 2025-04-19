@@ -1,0 +1,30 @@
+{
+  "name": "sound-mcp",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sho-yamane/sound-mcp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sho-yamane/sound-mcp/issues"
+  },
+  "homepage": "https://github.com/sho-yamane/sound-mcp#readme",
+  "description": "",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.1",
+    "@types/node": "^22.14.1",
+    "play-sound": "^1.1.6",
+    "typescript": "^5.8.3",
+    "zod": "^3.24.3"
+  }
+}
