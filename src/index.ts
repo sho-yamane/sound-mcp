@@ -1,3 +1,4 @@
+import * as fs from "node:fs";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import player from "play-sound";
@@ -22,6 +23,8 @@ const SYSTEM_SOUNDS = {
 const server = new McpServer({
   name: "CursorSoundMCP",
   version: "1.0.0",
+  description:
+    "Cursorエージェントがコーディングを終了したときに通知音を鳴らすMCP",
 });
 
 // 効果音を再生するツール
@@ -45,6 +48,20 @@ server.tool(
     try {
       // 選択されたシステムサウンドのパスを取得
       const soundPath = SYSTEM_SOUNDS[sound];
+
+      // ファイルの存在チェック
+      if (!fs.existsSync(soundPath)) {
+        console.error(`Sound file not found: ${soundPath}`);
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Sound file not found: ${soundPath}`,
+            },
+          ],
+          isError: true,
+        };
+      }
 
       // 音を再生
       audioPlayer.play(soundPath, (err: Error | null) => {
